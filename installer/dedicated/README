@@ -1,8 +1,8 @@
-#### T4K Seedbox Installer Script
+## T4K Seedbox Installer Script
 #### Current version = 2.05
 #### Last stable version = 2.05
 
-This script has been heavily modified from various other resources (most notably Notos). Working on Ubuntu 14.04 as well as Debian 7 OS installs. This script is enhanced to work on T4K Hosting Solutions server environments to match their specific needs. Running this script outside of T4K is done at the users on risk. Unless hosted on T4K - DO NOT contact in regards to support on this script.
+This script has been heavily modified from various other resources (most notably Notos). Working on Ubuntu 14.04 as well as Debian 7 OS installs. This script is enhanced to work on T4K Hosting Solutions server environments to match their specific needs. Running this script outside of T4K is done at the users own risk. Unless hosted on T4K - DO NOT contact in regards to support on this script.
 
 This script has the following features
 
