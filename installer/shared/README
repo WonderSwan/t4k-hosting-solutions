@@ -1,3 +1,5 @@
+*This script is valid only for the machine hosting shared slots. Do not attempt to install this on a Semi-Dedicated (VPS) or Dedicated slot.
 
 wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/sharedbox.sh
+
 bash sharedbox.sh
