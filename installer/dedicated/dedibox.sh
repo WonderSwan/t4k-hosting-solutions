@@ -142,7 +142,7 @@ cd rar
 ./unrar
 cp rar unrar /bin
 
-mkdir -p /etc/t4k-seedbox-install/
+mkdir /etc/t4k-seedbox-install/
 cd /etc/t4k-seedbox-install
 wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/dedicated/t4k-dedibox-install.zip
 unzip /etc/t4k-seedbox-install/t4k-dedibox-install.zip
