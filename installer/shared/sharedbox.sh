@@ -146,6 +146,7 @@ mkdir -p /etc/t4k-seedbox-install/
 
 cd /etc/t4k-seedbox-install
 wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/t4k-seedbox-install.zip
+unzip /etc/t4k-seedbox-install/t4k-seedbox-install.zip
 mkdir -p cd /etc/t4k-seedbox-install/source
 mkdir -p cd /etc/t4k-seedbox-install/users
 
