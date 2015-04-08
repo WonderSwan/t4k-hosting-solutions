@@ -51,6 +51,8 @@ After that access your box using a SSH client, like PuTTY.
 
 ####If you don't know Linux ENOUGH:
 
+DO NOT attempt to instal NGINX as a frontend proxy if you plan to use Transdroid (http://www.transdroid.org/). Doing so will cause the app to either not connect or crash repeatedly
+
 DO NOT use capital letters, all your usernames should be written in lowercase.
 
 DO NOT upgrade anything in your box, ask in the proper support channels before even considering it.
