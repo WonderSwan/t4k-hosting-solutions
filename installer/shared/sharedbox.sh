@@ -144,7 +144,7 @@ cp rar unrar /bin
 
 mkdir /etc/t4k-seedbox-install
 cd /etc/t4k-seedbox-install
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/dedicated-installer/master/t4k-dedibox-install.zip
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/t4k-dedibox-install.zip
 unzip /etc/t4k-seedbox-install/t4k-dedibox-install.zip
 mkdir -p cd /etc/t4k-seedbox-install/source
 mkdir -p cd /etc/t4k-seedbox-install/users
@@ -334,7 +334,7 @@ echo "ServerSignature Off" | tee -a /etc/apache2/apache2.conf > /dev/null
 echo "ServerTokens Prod" | tee -a /etc/apache2/apache2.conf > /dev/null
 echo "Timeout 30" | tee -a /etc/apache2/apache2.conf > /dev/null
 rm ports.conf
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/dedicated-installer/master/ports.conf
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/ports.conf
 service apache2 restart
 mkdir /etc/apache2/auth.users
 
@@ -882,10 +882,10 @@ bash /etc/t4k-seedbox-install/createSeedboxUser $NEWUSER1 $PASSWORD1 YES YES YES
 # 98. Cosmetic corrections & installing plowshare
 cd /var/www/rutorrent/plugins/autodl-irssi
 rm AutodlFilesDownloader.js
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/dedicated-installer/master/AutodlFilesDownloader.js
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/AutodlFilesDownloader.js
 cd /var/www/rutorrent/js
 rm webui.js
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/dedicated-installer/master/webui.js
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/webui.js
 cd ..
 chown -R www-data:www-data /var/www/rutorrent
 chmod -R 755 /var/www/rutorrent
@@ -904,7 +904,7 @@ fi
 cd /var/www/rutorrent/plugins/
 mkdir /var/www/rutorrent/plugins/ratiocolor/
 cd /var/www/rutorrent/plugins/ratiocolor/
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/dedicated-installer/master/ratiocolor.zip
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/ratiocolor.zip
 unzip /var/www/rutorrent/plugins/ratiocolor/ratiocolor.zip
 rm ratiocolor.zip
 cd
