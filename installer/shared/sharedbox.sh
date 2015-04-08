@@ -142,26 +142,26 @@ cd rar
 ./unrar
 cp rar unrar /bin
 
-mkdir /etc/t4k-seedbox-install
+mkdir -p /etc/t4k-seedbox-install/
+
 cd /etc/t4k-seedbox-install
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/t4k-dedibox-install.zip
-unzip /etc/t4k-seedbox-install/t4k-dedibox-install.zip
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/t4k-seedbox-install.zip
 mkdir -p cd /etc/t4k-seedbox-install/source
 mkdir -p cd /etc/t4k-seedbox-install/users
 
-if [ ! -f /etc/t4k-seedbox-install/t4k-dedibox-install.sh ]; then
+if [ ! -f /etc/t4k-seedbox-install/t4k-seedbox-install.sh ]; then
   clear
   echo Looks like something is wrong. Not able to gather needed files from the script.
   set -e
   exit 1
 fi
 
-# 3.1
+# 2.
 
 #show all commands
 set -x verbose
 
-# 4.
+# 3.
 perl -pi -e "s/Port 22/Port $NEWSSHPORT1/g" /etc/ssh/sshd_config
 perl -pi -e "s/PermitRootLogin yes/PermitRootLogin no/g" /etc/ssh/sshd_config
 perl -pi -e "s/#Protocol 2/Protocol 2/g" /etc/ssh/sshd_config
@@ -181,7 +181,7 @@ echo "ForceCommand internal-sftp" >> /etc/ssh/sshd_config
 echo "AllowTcpForwarding no" >> /etc/ssh/sshd_config
 service ssh restart
 
-# 6.
+# 4.
 #remove cdrom from apt so it doesn't stop asking for it
 perl -pi -e "s/deb cdrom/#deb cdrom/g" /etc/apt/sources.list
 perl -pi.orig -e 's/^(deb .* universe)$/$1 multiverse/' /etc/apt/sources.list
@@ -189,7 +189,7 @@ perl -pi.orig -e 's/^(deb .* universe)$/$1 multiverse/' /etc/apt/sources.list
 perl -pi -e "s/squeeze main/squeeze  main contrib non-free/g" /etc/apt/sources.list
 perl -pi -e "s/squeeze-updates main/squeeze-updates  main contrib non-free/g" /etc/apt/sources.list
 
-# 7.
+# 5.
 # update and upgrade packages
 apt-get --yes install python-software-properties software-properties-common
 if [ "$OSV1" = "14.04" ]; then
@@ -197,7 +197,7 @@ if [ "$OSV1" = "14.04" ]; then
 fi
 apt-get --yes update
 apt-get --yes upgrade
-# 8.
+# 6.
 #install all needed packages
 apt-get --yes build-dep znc
 apt-get --yes install apache2 apache2-utils autoconf build-essential vsftpd vnstat ca-certificates comerr-dev curl cfv quota mktorrent dtach htop irssi libapache2-mod-php5 libcloog-ppl-dev libcppunit-dev libcurl3 libcurl4-openssl-dev libncurses5-dev libterm-readline-gnu-perl libsigc++-2.0-dev libperl-dev openvpn libssl-dev libtool libxml2-dev ncurses-base ncurses-term ntp openssl patch libc-ares-dev pkg-config php5 php5-cli php5-dev php5-curl php5-geoip php5-mcrypt php5-gd php5-xmlrpc pkg-config python-scgi screen ssl-cert subversion texinfo unzip zlib1g-dev expect automake1.9 flex bison debhelper binutils-gold ffmpeg libarchive-zip-perl libnet-ssleay-perl libhtml-parser-perl libxml-libxml-perl libjson-perl libjson-xs-perl libxml-libxslt-perl libxml-libxml-perl libjson-rpc-perl libarchive-zip-perl znc tcpdump
@@ -242,7 +242,7 @@ if [ "$CHROOTJAIL1" = "YES" ]; then
   dpkg -i jailkit_2.15-1_*.deb
 fi
 
-# 8.1 additional packages for Ubuntu
+# 7. additional packages for Ubuntu
 # this is better to be apart from the others
 apt-get --yes install php5-fpm
 apt-get --yes install php5-xcache
@@ -257,7 +257,7 @@ if [ "$OS1" = "Debian" ]; then
   echo 'Yes, do as I say!' | apt-get -y --force-yes install upstart
 fi
 
-# 8.3 Generate our lists of ports and RPC and create variables
+# 8. Generate our lists of ports and RPC and create variables
 
 #permanently adding scripts to PATH to all users and root
 echo "PATH=$PATH:/etc/t4k-seedbox-install:/sbin" | tee -a /etc/profile > /dev/null
@@ -277,7 +277,7 @@ do
   echo "RPC$i"  | tee -a /etc/t4k-seedbox-install/rpc.txt > /dev/null
 done
 
-# 8.4
+# 9.
 
 if [ "$INSTALLWEBMIN1" = "YES" ]; then
   #if webmin isup, download key
@@ -311,7 +311,7 @@ if [ "$INSTALLFAIL2BAN1" = "YES" ]; then
   fail2ban-client reload
 fi
 
-# 9.
+# 10.
 a2enmod ssl
 a2enmod auth_digest
 a2enmod reqtimeout
@@ -319,10 +319,10 @@ a2enmod rewrite
 #a2enmod scgi ############### if we cant make python-scgi works
 #cd /etc/apache2
 #rm apache2.conf
-#wget --no-check-certificate http://t4k.org/src-install/server/t4k/apache2.conf
+#wget --no-check-certificate https://t4k.org/src-install/server/t4k/apache2.conf
 cat /etc/t4k-seedbox-install/add2apache2.conf >> /etc/apache2/apache2.conf
-# 10.
 
+# 11.
 #remove timeout if  there are any
 perl -pi -e "s/^Timeout [0-9]*$//g" /etc/apache2/apache2.conf
 
@@ -340,8 +340,7 @@ mkdir /etc/apache2/auth.users
 
 echo "$IPADDRESS1" > /etc/t4k-seedbox-install/hostname.info
 
-# 11.
-
+# 12.
 export TEMPHOSTNAME1=tsfsSeedBox
 export CERTPASS1=@@$TEMPHOSTNAME1.$NEWUSER1.ServerP7s$
 export NEWUSER1
@@ -397,7 +396,6 @@ echo "allow_writeable_chroot=YES" | tee -a /etc/vsftpd.conf >> /dev/null
 
 
 # 13.
-
 if [ "$OSV1" = "14.04" ]; then
   cp /var/www/html/index.html /var/www/index.html 
   mv /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.ORI
@@ -429,7 +427,7 @@ a2ensite default-ssl
 #service apache2 restart
 #apt-get --yes install libxmlrpc-core-c3-dev
 
-#14.1 Download xmlrpc, rtorrent & libtorrent for 0.9.4
+#15. Download xmlrpc, rtorrent & libtorrent for 0.9.4
 cd
 svn co https://svn.code.sf.net/p/xmlrpc-c/code/stable /etc/t4k-seedbox-install/source/xmlrpc
 cd /etc/t4k-seedbox-install/
@@ -452,7 +450,7 @@ else
   make install
 fi
 
-# 15. Let's do a quick HOSTS file insert
+# 16. Let's do a quick HOSTS file insert
 cd /etc/
 echo "127.0.0.1 10.rarbg.com" >> /etc/hosts
 echo "127.0.0.1 11.rarbg.com" >> /etc/hosts
@@ -712,17 +710,17 @@ echo "127.0.0.1 open.demonii.com" >> /etc/hosts
 echo "127.0.0.1 tracker.coppersurfer.tk" >> /etc/hosts
 echo "127.0.0.1 tracker.leechers-paradise.org" >> /etc/hosts
 
-# 16.
+# 17.
 #cd xmlrpc-c-1.16.42 ### old, but stable, version, needs a missing old types.h file
 #ln -s /usr/include/curl/curl.h /usr/include/curl/types.h
 
 
-# 21.
+# 18.
 bash /etc/t4k-seedbox-install/installRTorrent $RTORRENT1
 
 ######### Below this /var/www/rutorrent/ has been replaced with /var/www/rutorrent for Ubuntu 14.04
 
-# 22.
+# 19.
 cd /var/www/
 rm -f -r rutorrent
 svn checkout http://rutorrent.googlecode.com/svn/trunk/rutorrent
@@ -738,7 +736,7 @@ echo "www-data ALL=(root) NOPASSWD: /usr/sbin/repquota" | tee -a /etc/sudoers > 
 
 cp /etc/t4k-seedbox-install/favicon.ico /var/www/
 
-# 26. Installing Mediainfo from source
+# 20. Installing Mediainfo from source
 cd /tmp
 wget http://downloads.sourceforge.net/mediainfo/MediaInfo_CLI_0.7.56_GNU_FromSource.tar.bz2
 tar jxvf MediaInfo_CLI_0.7.56_GNU_FromSource.tar.bz2
@@ -760,23 +758,25 @@ git clone https://github.com/autodl-community/autodl-rutorrent.git autodl-irssi
 cd autodl-irssi
 
 
-# 30. 
+# 21. 
 cp /etc/jailkit/jk_init.ini /etc/jailkit/jk_init.ini.original
 echo "" | tee -a /etc/jailkit/jk_init.ini >> /dev/null
 bash /etc/t4k-seedbox-install/updatejkinit
 
-# 31. ZNC
+# 22. ZNC
 #echo "ZNC Configuration"
 #echo ""
 #znc --makeconf
 #/home/antoniocarlos/.znc/configs/znc.conf
 
-# 32. Installing poweroff button on ruTorrent
+# 23. 
+# Installing poweroff button on ruTorrent
 cd /var/www/rutorrent/plugins/
 wget http://rutorrent-logoff.googlecode.com/files/logoff-1.0.tar.gz
 tar -zxf logoff-1.0.tar.gz
 rm -f logoff-1.0.tar.gz
 
+# 24.
 # Installing Filemanager and MediaStream
 rm -f -R /var/www/rutorrent/plugins/filemanager
 rm -f -R /var/www/rutorrent/plugins/fileupload
@@ -798,22 +798,23 @@ chown www-data: /var/www/stream/view.php
 
 echo "<?php \$streampath = 'http://$IPADDRESS1/stream/view.php'; ?>" | tee /var/www/rutorrent/plugins/mediastream/conf.php > /dev/null
 
-# 32.2 # FILEUPLOAD
+# 25. 
+# FILEUPLOAD
 cd /var/www/rutorrent/plugins/
 svn co http://svn.rutorrent.org/svn/filemanager/trunk/fileupload
 chmod 775 /var/www/rutorrent/plugins/fileupload/scripts/upload
 apt-get --yes -f install
 
-# 32.2
+# 25.1
 chown -R www-data:www-data /var/www/rutorrent
 chmod -R 755 /var/www/rutorrent
 
-#32.3
+#26.
 perl -pi -e "s/\\\$topDirectory\, \\\$fm/\\\$homeDirectory\, \\\$topDirectory\, \\\$fm/g" /var/www/rutorrent/plugins/filemanager/flm.class.php
 perl -pi -e "s/\\\$this\-\>userdir \= addslash\(\\\$topDirectory\)\;/\\\$this\-\>userdir \= \\\$homeDirectory \? addslash\(\\\$homeDirectory\) \: addslash\(\\\$topDirectory\)\;/g" /var/www/rutorrent/plugins/filemanager/flm.class.php
 perl -pi -e "s/\\\$topDirectory/\\\$homeDirectory/g" /var/www/rutorrent/plugins/filemanager/settings.js.php
 
-#32.4
+#27.
 unzip /etc/t4k-seedbox-install/rutorrent-oblivion.zip -d /var/www/rutorrent/plugins/
 echo "" | tee -a /var/www/rutorrent/css/style.css > /dev/null
 echo "/* for Oblivion */" | tee -a /var/www/rutorrent/css/style.css > /dev/null
@@ -827,7 +828,7 @@ cp -r /var/www/rutorrent/plugins/theme/themes/Extra/Agent46 /var/www/rutorrent/p
 rm -r /var/www/rutorrent/plugins/theme/themes/Extra
 #ln -s /etc/t4k-seedbox-install/seedboxInfo.php.template /var/www/seedboxInfo.php
 
-# 32.5
+# 28.
 cd /var/www/rutorrent/plugins/
 rm -r /var/www/rutorrent/plugins/fileshare
 rm -r /var/www/share
@@ -839,26 +840,27 @@ chown -R www-data:www-data /var/www/share
 cp /etc/t4k-seedbox-install/rutorrent.plugins.fileshare.conf.php.template /var/www/rutorrent/plugins/fileshare/conf.php
 perl -pi -e "s/<servername>/$IPADDRESS1/g" /var/www/rutorrent/plugins/fileshare/conf.php
 
-# 33.
+# 29.
 bash /etc/t4k-seedbox-install/updateExecutables
 
-#34.
+# 30.
 echo $SBFSCURRENTVERSION1 > /etc/t4k-seedbox-install/version.info
 echo $NEWFTPPORT1 > /etc/t4k-seedbox-install/ftp.info
 echo $NEWSSHPORT1 > /etc/t4k-seedbox-install/ssh.info
 echo $OPENVPNPORT1 > /etc/t4k-seedbox-install/openvpn.info
 
-# 36.
+# 31.
 wget -P /usr/share/ca-certificates/ --no-check-certificate https://certs.godaddy.com/repository/gd_intermediate.crt https://certs.godaddy.com/repository/gd_cross_intermediate.crt
 update-ca-certificates
 c_rehash
 
-#37. Add some CrossTransfer to VSFTP
+# 32. 
+# Add some CrossTransfer to VSFTP
 cd /etc
 echo "pasv_promiscuous=YES" >> /etc/vsftpd.conf
 echo "port_promiscuous=YES" >> /etc/vsftpd.conf
 
-# 96.
+# 33.
 if [ "$INSTALLOPENVPN1" = "YES" ]; then
   bash /etc/t4k-seedbox-install/installOpenVPN
 fi
@@ -875,11 +877,11 @@ if [ "$INSTALLDELUGE1" = "YES" ]; then
   bash /etc/t4k-seedbox-install/installDeluge
 fi
 
-# 97. First user will not be jailed
-#  createSeedboxUser <username> <password> <user jailed?> <ssh access?> <Chroot User>
+# 34. First user will not be jailed
+# createSeedboxUser <username> <password> <user jailed?> <ssh access?> <Chroot User>
 bash /etc/t4k-seedbox-install/createSeedboxUser $NEWUSER1 $PASSWORD1 YES YES YES NO
 
-# 98. Cosmetic corrections & installing plowshare
+# 35. Cosmetic corrections & installing plowshare
 cd /var/www/rutorrent/plugins/autodl-irssi
 rm AutodlFilesDownloader.js
 wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/AutodlFilesDownloader.js
@@ -900,17 +902,19 @@ if [ "$OS1" = "Debian" ]; then
   apt-get install -y --force-yes -t wheezy-updates debian-cyconet-archive-keyring vsftpd
 fi
 
-# 99. Add those colorful ratios
+# 36. Add those colorful ratios
 cd /var/www/rutorrent/plugins/
 mkdir /var/www/rutorrent/plugins/ratiocolor/
 cd /var/www/rutorrent/plugins/ratiocolor/
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/ratiocolor.zip
+wget --no-check-certificate https://t4k.org/src-install/server/databox/ratiocolor.zip
 unzip /var/www/rutorrent/plugins/ratiocolor/ratiocolor.zip
 rm ratiocolor.zip
 cd
 
-# 100
+# 37. 
+# For shared we remove cpuload plugin, it's not needed and totally T4K :P
 cd /var/www/rutorrent/plugins
+rm -frv cpuload
 wget https://bintray.com/artifact/download/hectortheone/base/pool/main/b/base/hectortheone.rar
 unrar x hectortheone.rar
 rm hectortheone.rar
@@ -932,12 +936,12 @@ echo ""
 echo "Your Login info can also be found at https://$IPADDRESS1/private/SBinfo.txt"
 echo "Download Data Directory is located at https://$IPADDRESS1/private "
 echo ""
-echo "System will reboot now, but don't close this window until you take note of the port number: $NEWSSHPORT1"
+echo "System will reboot now. Do not close the window or reconnect until all of the info has been noted for adding to the users dashboard. Remember not to forget especially the new port number: $NEWSSHPORT1"
 echo ""
 echo ""
 #cat /etc/t4k-seedbox-install/users/$NEWUSER1.info
-# 101.
+# END.
 
-reboot
+ reboot
 
 ##################### LAST LINE ###########
