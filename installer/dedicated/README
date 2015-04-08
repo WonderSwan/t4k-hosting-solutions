@@ -1,4 +1,4 @@
-## T4K Seedbox Installer Script
+#### T4K Seedbox Installer Script
 #### Current version = 2.05
 #### Last stable version = 2.05
 
@@ -30,7 +30,7 @@ This script has the following features
 * Rapidleech (http://www.rapidleech.com)
 
 ## Main ruTorrent plugins
-autotoolscpuload, diskspace, erasedata, extratio, extsearch, feeds, filedrop, filemanager, geoip, history, logoff, mediainfo, mediastream, rss, scheduler, screenshots, theme, trafic and unpack
+autotoolscpuload, diskspace, erasedata, extratio, extsearch, feeds, filedrop, filemanager, geoip, history, logoff, mediainfo, mediastream, ratiocolor, rss, scheduler, screenshots, theme, trafic and unpack
 
 ## Additional ruTorrent plugins
 * Autodl-IRSSI (with an updated list of trackers)
@@ -40,7 +40,8 @@ autotoolscpuload, diskspace, erasedata, extratio, extsearch, feeds, filedrop, fi
 * Fileshare Plugin (http://forums.rutorrent.org/index.php?topic=705.0)
 * MediaStream (to watch your videos right from your seedbox)
 * Logoff
-* Theme: Oblivion & Agent 46
+* Theme: Oblivion [BLUE] & Agent 46
+* Colorful Ratios: Customized to match Oblivion [BLUE]
 
 ## Before installation
 You need to have a Fresh "blank" server installation.
