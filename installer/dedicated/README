@@ -1,0 +1,5 @@
+*This script works for both Semi-Dedicated (VPS) as well as Dedicated
+
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/dedicated/dedibox.sh
+
+bash dedibox.sh
