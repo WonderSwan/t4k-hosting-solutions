@@ -1,1 +1,3 @@
 
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/sharedbox.sh
+bash sharedbox.sh
