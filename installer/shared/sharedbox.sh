@@ -142,7 +142,7 @@ cd rar
 ./unrar
 cp rar unrar /bin
 
-mkdir -p /etc/t4k-seedbox-install/
+mkdir /etc/t4k-seedbox-install/
 
 cd /etc/t4k-seedbox-install
 wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/t4k-seedbox-install.zip
@@ -893,7 +893,7 @@ cd ..
 chown -R www-data:www-data /var/www/rutorrent
 chmod -R 755 /var/www/rutorrent
 cd 
-git clone https://code.google.com/p/plowshare/
+git clone https://github.com/mcrapet/plowshare.git
 cd ~/plowshare
 make install
 cd
@@ -907,7 +907,7 @@ fi
 cd /var/www/rutorrent/plugins/
 mkdir /var/www/rutorrent/plugins/ratiocolor/
 cd /var/www/rutorrent/plugins/ratiocolor/
-wget --no-check-certificate https://t4k.org/src-install/server/databox/ratiocolor.zip
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/ratiocolor.zip
 unzip /var/www/rutorrent/plugins/ratiocolor/ratiocolor.zip
 rm ratiocolor.zip
 cd
