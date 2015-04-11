@@ -16,10 +16,10 @@ This script has the following features
 ## Default Options Enabled in this script (can be changed if needed)
 * "Install Webmin?"      YES
 * "Install Fail2ban?"    YES
-* "Install OpenVPN?"     NO
-* "Install SABnzbd?"     NO
-* "Install Rapidleech?"  NO
-* "Install Deluge?"      NO
+* "Install OpenVPN?"     YES
+* "Install SABnzbd?"     YES
+* "Install Rapidleech?"  YES
+* "Install Deluge?"      YES
 * RTorrent version       0.9.4
 
 ## Installed software
