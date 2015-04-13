@@ -909,6 +909,15 @@ unzip /var/www/rutorrent/plugins/ratiocolor/ratiocolor.zip
 rm ratiocolor.zip
 cd
 
+# 37. ruTorrent Streaming capabilities
+cd /var/www/rutorrent/plugins/
+mkdir /var/www/rutorrent/plugins/stream/
+cd /var/www/rutorrent/plugins/stream/
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/dedicated/stream.zip
+unzip /var/www/rutorrent/plugins/stream/stream.zip
+rm stream.zip
+cd
+
 # 100
 cd /var/www/rutorrent/plugins
 wget https://bintray.com/artifact/download/hectortheone/base/pool/main/b/base/hectortheone.rar

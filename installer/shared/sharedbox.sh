@@ -912,8 +912,16 @@ unzip /var/www/rutorrent/plugins/ratiocolor/ratiocolor.zip
 rm ratiocolor.zip
 cd
 
-# 37. 
-# For shared we remove cpuload plugin, it's not needed and totally T4K :P
+# 37. ruTorrent Streaming capabilities
+cd /var/www/rutorrent/plugins/
+mkdir /var/www/rutorrent/plugins/stream/
+cd /var/www/rutorrent/plugins/stream/
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/stream.zip
+unzip /var/www/rutorrent/plugins/stream/stream.zip
+rm stream.zip
+cd
+
+# 38. For shared we remove cpuload plugin, it's not needed and totally T4K :P
 cd /var/www/rutorrent/plugins
 rm -frv cpuload
 wget https://bintray.com/artifact/download/hectortheone/base/pool/main/b/base/hectortheone.rar
@@ -925,6 +933,10 @@ cd ..
 chown -R www-data:www-data /var/www/rutorrent
 set +x verbose
 clear
+
+# 39. Quick PHP adjustments
+cd /etc/php5/apache2/
+sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' php.ini
 
 echo ""
 echo "<<< T4K Seedbox Script >>>"
