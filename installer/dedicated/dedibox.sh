@@ -930,6 +930,9 @@ chown -R www-data:www-data /var/www/rutorrent
 set +x verbose
 clear
 
+# 40. Remove Sendmail - it's a resource hog
+apt-get purge sendmail*
+
 echo ""
 echo "<<< T4K Seedbox Script >>>"
 echo "Script Modified by b0ts37en ---> https://t4k.org/"

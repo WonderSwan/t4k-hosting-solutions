@@ -938,6 +938,9 @@ clear
 cd /etc/php5/apache2/
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' php.ini
 
+# 40. Remove Sendmail - it's a resource hog
+apt-get purge sendmail*
+
 echo ""
 echo "<<< T4K Seedbox Script >>>"
 echo "Script Modified by b0ts37en ---> https://t4k.org/"
