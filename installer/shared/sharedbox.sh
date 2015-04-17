@@ -934,11 +934,17 @@ chown -R www-data:www-data /var/www/rutorrent
 set +x verbose
 clear
 
-# 39. Quick PHP adjustments
+# 39. Add an updated Mediainfo plugin
+cd /var/www/rutorrent/plugins/mediainfo/
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/mediainfo.zip
+unzip /var/www/rutorrent/plugins/mediainfo/mediainfo.zip
+rm mediainfo.zip
+
+# 40. Quick PHP adjustments
 cd /etc/php5/apache2/
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' php.ini
 
-# 40. Remove Sendmail - it's a resource hog
+# 41. Remove Sendmail - it's a resource hog
 apt-get purge sendmail*
 
 echo ""
