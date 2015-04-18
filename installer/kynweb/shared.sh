@@ -349,6 +349,7 @@ service apache2 restart
 mkdir /etc/apache2/auth.users
 
 echo "$HOSTNAME.kyneticweb.com" > /etc/kyneticweb-seedbox/hostname.info
+echo "$IPADDRESS1" > /etc/kyneticweb-seedbox/hostname.info
 
 # 12.
 export TEMPHOSTNAME1=KyneticWebSeedBox
