@@ -351,7 +351,7 @@ mkdir /etc/apache2/auth.users
 echo "$HOSTNAME.kyneticweb.com" > /etc/kyneticweb-seedbox/hostname.info
 
 # 12.
-export TEMPHOSTNAME1=tsfsSeedBox
+export TEMPHOSTNAME1=KyneticWebSeedBox
 export CERTPASS1=@@$TEMPHOSTNAME1.$NEWUSER1.ServerP7s$
 export NEWUSER1
 export HOSTNAME
