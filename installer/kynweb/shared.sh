@@ -849,7 +849,7 @@ ln -s /var/www/rutorrent/plugins/fileshare/share.php /var/www/share/share.php
 ln -s /var/www/rutorrent/plugins/fileshare/share.php /var/www/share/index.php
 chown -R www-data:www-data /var/www/share
 cp /etc/kyneticweb-seedbox/rutorrent.plugins.fileshare.conf.php.template /var/www/rutorrent/plugins/fileshare/conf.php
-perl -pi -e "s/<servername>/$HOSTNAME/g" /var/www/rutorrent/plugins/fileshare/conf.php
+perl -pi -e "s/<servername>/$HOSTNAME.kyneticweb.com/g" /var/www/rutorrent/plugins/fileshare/conf.php
 
 # 29.
 bash /etc/kyneticweb-seedbox/updateExecutables
