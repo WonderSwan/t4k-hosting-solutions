@@ -1,10 +1,10 @@
-## T4K Seedbox Installer Script
+## KyneticWeb Seedbox Script
 #### Current version = 2.05
 #### Last stable version = 2.05
 
-This script has been heavily modified from various other resources (most notably Notos). Working on Ubuntu 14.04 as well as Debian 7 OS installs. This script is enhanced to work on T4K Hosting Solutions server environments to match their specific needs. Running this script outside of T4K is done at the users own risk. Unless hosted on T4K - DO NOT contact in regards to support on this script. 
+This script has been heavily modified from various other resources (most notably Notos). Working on Ubuntu 14.04 as well as Debian 7 OS installs. This script is enhanced to work on KyneticWeb Hosting Solutions server environments to match their specific needs. Running this script outside of KyneticWeb is done at the users own risk. Unless hosted on KyneticWeb - DO NOT contact in regards to support on this script. 
 
-Furthermore, this script is used by T4K Hosting Solutions staff for installing and setting up Host Servers for T4K Shared Environments - DO NOT attempt to install this on a non T4K Hosted Server.
+Furthermore, this script is used by KyneticWeb Hosting Solutions staff for installing and setting up Host Servers for KyneticWeb Shared Environments - DO NOT attempt to install this on a non KyneticWeb Hosted Server.
 
 This script has the following features
 
@@ -68,14 +68,14 @@ DO NOT use capital letters, all your usernames should be written in lowercase.
 
 DO NOT upgrade anything in your box, ask in the proper support channels before even considering it.
 
-DO NOT try to reconfigure packages using other tutorials - this script (AS IS) is designed to work with what's included. If you feel the script is lacking a particular feature(s), support your Feature Request at https://t4k.space/forum
+DO NOT try to reconfigure packages using other tutorials - this script (AS IS) is designed to work with what's included. If you feel the script is lacking a particular feature(s), support your Feature Request at https://www.kyneticweb.com/community/feature-request
 
 ## How to install
 *This script is valid only for the machine hosting shared slots. Do not attempt to install this on a Semi-Dedicated (VPS) or Dedicated slot.
 
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/shared/sharedbox.sh
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/sharedbox.sh
 
-bash sharedbox.sh
+bash shared.sh
 
 ####You must be logged in as root to run this installation or use sudo on it.
 
@@ -90,6 +90,7 @@ After installing you will have access to the following commands to be used direc
 * installWebmin
 * installDeluge
 * updategitRepository
+* removeSendmail
 * removeWebmin
 * upgradeRTorrent
 * installRTorrent
@@ -102,7 +103,7 @@ To access services installed on your new server point your browser to the follow
 ```
 https://<Server IP or Server Name>/private/SBinfo.txt
 ```
--- These details will also be easily accessed via your Member Dashboard at https://t4k.space/
+-- These details will also be easily accessed via your Member Dashboard at https://my.kyneticweb.com/
 ```
 
 ## Download Directory
@@ -116,7 +117,7 @@ To use your VPN you will need a VPN client compatible with [OpenVPN](http://open
 ```
 https://<Server IP or Server Name>/rutorrent/CLIENT-NAME.zip` and use it in any OpenVPN client.
 ```
--- For ease of use, we automatically add this config file for download to your Member Dashboard at https://t4k.space/
+-- For ease of use, we automatically add this config file for download to your Member Dashboard at https://my.kyneticweb.com/
 ```
 
 ## Supported and tested servers
@@ -146,13 +147,13 @@ You don't worry about that. Any changes made, we'll announce.
 
 We have support in the following locations:
 
-*Forum  - https://t4k.space/forum
+*Forum  - https://www.kyneticweb.com/community/latest
 *IRC    - irc://p2p.net #t4k
-*Ticket - https://t4k.space/
+*Ticket - https://my.kyneticweb.com/
 
 
 ## License
-Copyright (c) 2015 t4k.org (https://t4k.org/) 
+Copyright (c) 2015 KyneticWeb LLC (https://www.kyneticweb.com/) 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
 
