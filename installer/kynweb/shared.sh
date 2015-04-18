@@ -99,8 +99,9 @@ clear
 
 #localhost is ok this rtorrent/rutorrent installation
 #HOSTNAME=`ifconfig | sed -n 's/.*inet addr:\([0-9.]\+\)\s.*/\1/p' | grep -v 127 | head -n 1`
+#localhost is ok this rtorrent/rutorrent installation
+IPADDRESS1=`ifconfig | sed -n 's/.*inet addr:\([0-9.]\+\)\s.*/\1/p' | grep -v 127 | head -n 1`
 HOSTNAME=`hostname`
-CHROOTJAIL1=NO
 
 #those passwords will be changed in the next steps
 PASSWORD1=a
@@ -108,7 +109,8 @@ PASSWORD2=b
 
 getString NO  "You need to create an user for your seedbox: " NEWUSER1
 getString YES "Password for user $NEWUSER1: " PASSWORD1
-getString NO  "IP address or hostname of your box: " HOSTNAME $HOSTNAME.kyneticweb.com
+getString NO  "IP address of your box: " IPADDRESS1 $IPADDRESS1
+getString NO  "Hostname of your box: " HOSTNAME $HOSTNAME
 getString NO  "SSH port: " NEWSSHPORT1 4747
 getString NO  "vsftp port (usually 21): " NEWFTPPORT1 5757
 getString NO  "OpenVPN port: " OPENVPNPORT1 31195
@@ -130,6 +132,11 @@ if [ "$OSV1" = "14.04" ]; then
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 fi
+
+echo "$IPADDRESS1 $HOSTNAME.kyneticweb.com $HOSTNAME" > /etc/hosts
+/etc/init.d/hostname.sh start
+hostname
+hostname -f
 
 apt-get --yes update
 apt-get --yes install whois sudo makepasswd git nano 
