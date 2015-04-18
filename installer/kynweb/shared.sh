@@ -133,7 +133,8 @@ if [ "$OSV1" = "14.04" ]; then
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
 fi
 
-echo "$IPADDRESS1 $HOSTNAME.kyneticweb.com $HOSTNAME" > /etc/hosts
+echo "$IPADDRESS1 $HOSTNAME.kyneticweb.com $HOSTNAME" >> /etc/hosts
+echo "$HOSTNAME.kyneticweb.com" > /etc/hostname
 /etc/init.d/hostname.sh start
 hostname
 hostname -f
