@@ -944,10 +944,10 @@ set +x verbose
 clear
 
 # 39. Add an updated Mediainfo plugin
-cd /var/www/rutorrent/plugins/mediainfo/
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/mediainfo.zip
-unzip /var/www/rutorrent/plugins/mediainfo/mediainfo.zip
-rm mediainfo.zip
+#cd /var/www/rutorrent/plugins/mediainfo/
+#wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/mediainfo.zip
+#unzip /var/www/rutorrent/plugins/mediainfo/mediainfo.zip
+#rm mediainfo.zip
 
 # 40. Quick PHP adjustments
 cd /etc/php5/apache2/
