@@ -73,9 +73,10 @@ DO NOT try to reconfigure packages using other tutorials - this script (AS IS) i
 ## How to install
 *This script is valid only for the machine hosting shared slots. Do not attempt to install this on a Semi-Dedicated (VPS) or Dedicated slot.
 
-wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/shared.sh
+```wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/shared.sh
 
 bash shared.sh
+```
 
 ####You must be logged in as root to run this installation or use sudo on it.
 
