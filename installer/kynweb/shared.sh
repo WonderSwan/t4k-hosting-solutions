@@ -944,18 +944,24 @@ chown -R www-data:www-data /var/www/rutorrent
 set +x verbose
 clear
 
-# 39. Add an updated Mediainfo plugin
-#cd /var/www/rutorrent/plugins/mediainfo/
-#wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/mediainfo.zip
-#unzip /var/www/rutorrent/plugins/mediainfo/mediainfo.zip
-#rm mediainfo.zip
+# 39. Installing DivX Codec
+cd /tmp
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/divx.zip
+unzip divx.zip
+cd divx
+bash install.sh
+echo | q
+echo | yes
+apt-get install vlc
 
 # 40. Quick PHP adjustments
 cd /etc/php5/apache2/
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' php.ini
 
-# 41. Remove Sendmail - it's a resource hog
-#apt-get purge sendmail*
+# 41. Install CA Certificates
+perl -pi -e "s/SSLCertificateFile    \/etc\/ssl\/certs\/ssl-cert-snakeoil.pem/SSLCertificateFile    \/etc\/kyneticweb-seedbox\/ssl\/sfr5.crt/g" /etc/apache2/sites-available/default-ssl
+perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/SSLCertificateKeyFile \/etc\/kyneticweb-seedbox\/ssl\/sfr5.key/g" /etc/apache2/sites-available/default-ssl
+
 
 echo ""
 echo "<<< KyneticWeb Seedbox Script >>>"
