@@ -953,6 +953,8 @@ cd divx611-20060201-gcc4.0.1.zip/
 bash install.sh
 apt-get install vlc
 
+apt-get install mediainfo
+
 # 40. Quick PHP adjustments
 cd /etc/php5/apache2/
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' php.ini
