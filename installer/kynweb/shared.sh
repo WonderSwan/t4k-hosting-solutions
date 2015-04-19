@@ -963,6 +963,11 @@ perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/
 # 42. Stream Auto-Login
 perl -pi -e "s/\\\$auth \= \'\';/\\\$auth \= \'\\\$NEWUSER1\:\\\$PASSWORD1\';/g" /var/www/rutorrent/plugins/stream/config.php
 
+# 43. Disable default-ssl
+a2dissite default-ssl
+service apache2 reload
+service apache2 restart
+
 echo ""
 echo "<<< KyneticWeb Seedbox Script >>>"
 echo ""
