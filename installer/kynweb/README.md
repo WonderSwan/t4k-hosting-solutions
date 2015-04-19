@@ -73,7 +73,8 @@ DO NOT try to reconfigure packages using other tutorials - this script (AS IS) i
 ## How to install
 *This script is valid only for the machine hosting shared slots. Do not attempt to install this on a Semi-Dedicated (VPS) or Dedicated slot.
 
-```wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/shared.sh
+```
+wget --no-check-certificate https://raw.githubusercontent.com/b0ts37en/t4k-hosting-solutions/master/installer/kynweb/shared.sh
 
 bash shared.sh
 ```
@@ -105,7 +106,6 @@ To access services installed on your new server point your browser to the follow
 https://<Server IP or Server Name>/private/SBinfo.txt
 ```
 -- These details will also be easily accessed via your Member Dashboard at https://my.kyneticweb.com/
-```
 
 ## Download Directory
 To access Downloaded data directory on your new server; point your browser to the following address:
@@ -119,7 +119,6 @@ To use your VPN you will need a VPN client compatible with [OpenVPN](http://open
 https://<Server IP or Server Name>/rutorrent/CLIENT-NAME.zip` and use it in any OpenVPN client.
 ```
 -- For ease of use, we automatically add this config file for download to your Member Dashboard at https://my.kyneticweb.com/
-```
 
 ## Supported and tested servers
 * Ubuntu Server 12.10.0 - 64bit (on VM environment)
@@ -149,7 +148,7 @@ You don't worry about that. Any changes made, we'll announce.
 We have support in the following locations:
 
 *Forum  - https://www.kyneticweb.com/community/latest
-*IRC    - irc://p2p.net #t4k
+*IRC    - irc://irc.p2p-network.net:6667 #t4k
 *Ticket - https://my.kyneticweb.com/
 
 
