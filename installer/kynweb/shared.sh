@@ -961,7 +961,7 @@ perl -pi -e "s/SSLCertificateFile    \/etc\/ssl\/certs\/ssl-cert-snakeoil.pem/SS
 perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/SSLCertificateKeyFile \/etc\/kyneticweb-seedbox\/ssl\/sfr5.key/g" /etc/apache2/sites-available/default-ssl
 
 # 42. Stream Auto-Login
-perl -pi -e "s/\\\$auth \= \'\';/\\\$auth \= \'\\\$NEWUSER1\:\\\$PASSWORD1\';/g" /var/www/rutorrent/plugins/stream
+perl -pi -e "s/\\\$auth \= \'\';/\\\$auth \= \'\\\$NEWUSER1\:\\\$PASSWORD1\';/g" /var/www/rutorrent/plugins/stream/config.php
 
 echo ""
 echo "<<< KyneticWeb Seedbox Script >>>"
