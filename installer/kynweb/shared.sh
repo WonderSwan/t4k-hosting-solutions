@@ -748,9 +748,10 @@ echo "www-data ALL=(root) NOPASSWD: /usr/sbin/repquota" | tee -a /etc/sudoers > 
 cp /etc/kyneticweb-seedbox/favicon.ico /var/www/
 
 # 20. Installing Mediainfo from source
-cd /tmp
+cd
 wget http://downloads.sourceforge.net/mediainfo/MediaInfo_CLI_0.7.73_GNU_FromSource.tar.bz2
 tar jxvf MediaInfo_CLI_0.7.73_GNU_FromSource.tar.bz2
+#chown root -R /tmp/MediaInfo_CLI_GNU_FromSource/
 cd MediaInfo_CLI_GNU_FromSource/
 sh CLI_Compile.sh
 cd MediaInfo/Project/GNU/CLI
@@ -957,8 +958,8 @@ cd /etc/php5/apache2/
 sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' php.ini
 
 # 41. Install CA Certificates
-perl -pi -e "s/SSLCertificateFile    \/etc\/ssl\/certs\/ssl-cert-snakeoil.pem/SSLCertificateFile    \/etc\/kyneticweb-seedbox\/ssl\/sfr5.crt/g" /etc/apache2/sites-available/default-ssl
-perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/SSLCertificateKeyFile \/etc\/kyneticweb-seedbox\/ssl\/sfr5.key/g" /etc/apache2/sites-available/default-ssl
+perl -pi -e "s/SSLCertificateFile    \/etc\/ssl\/certs\/ssl-cert-snakeoil.pem/SSLCertificateFile    \/etc\/kyneticweb-seedbox\/ssl\/kyneticweb.crt/g" /etc/apache2/sites-available/default-ssl
+perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/SSLCertificateKeyFile \/etc\/kyneticweb-seedbox\/ssl\/kyneticweb.key/g" /etc/apache2/sites-available/default-ssl
 
 # 42. Stream Auto-Login
 perl -pi -e "s/\\\$auth \= \'\';/\\\$auth \= \'\\\$NEWUSER1\:\\\$PASSWORD1\';/g" /var/www/rutorrent/plugins/stream/config.php
