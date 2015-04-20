@@ -971,9 +971,9 @@ perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/
 perl -pi -e "s/#qmeter-disk-td \{\ background\: url\(\.\/images\/disk.gif\)\ 5px no-repeat\; \}/#qmeter-disk-td \{\ background\: url\(\.\/images\/disk.gif\)\ 5px no-repeat\;display\:none\;\}/g" /var/www/rutorrent/plugins/quotaspace/quotaspace.css
 
 # 44. Disable default-ssl
-a2dissite default-ssl
-service apache2 reload
-service apache2 restart
+#a2dissite default-ssl
+#service apache2 reload
+#service apache2 restart
 
 echo ""
 echo "<<< KyneticWeb Seedbox Script >>>"
