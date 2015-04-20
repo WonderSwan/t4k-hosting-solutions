@@ -957,16 +957,20 @@ apt-get install mediainfo
 
 # 40. Quick PHP adjustments
 cd /etc/php5/apache2/
-sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' php.ini
+sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 8M/g' /etc/php5/apache2/php.ini
+sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php5/apache2/php.ini
 
 # 41. Install CA Certificates
 perl -pi -e "s/SSLCertificateFile    \/etc\/ssl\/certs\/ssl-cert-snakeoil.pem/SSLCertificateFile    \/etc\/kyneticweb-seedbox\/ssl\/kyneticweb.crt/g" /etc/apache2/sites-available/default-ssl
 perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/SSLCertificateKeyFile \/etc\/kyneticweb-seedbox\/ssl\/kyneticweb.key/g" /etc/apache2/sites-available/default-ssl
 
 # 42. Stream Auto-Login
-perl -pi -e "s/\\\$auth \= \'\';/\\\$auth \= \'\\\$NEWUSER1\:\\\$PASSWORD1\';/g" /var/www/rutorrent/plugins/stream/config.php
+#perl -pi -e "s/\\\$auth \= \'\';/\\\$auth \= \'\\\$NEWUSER1\:\\\$PASSWORD1\';/g" /var/www/rutorrent/plugins/stream/config.php
 
-# 43. Disable default-ssl
+# 43. Remove redundant disk meter
+perl -pi -e "s/#qmeter-disk-td \{\ background\: url\(\.\/images\/disk.gif\)\ 5px no-repeat\; \}/#qmeter-disk-td \{\ background\: url\(\.\/images\/disk.gif\)\ 5px no-repeat\;display\:none\;\}/g" /var/www/rutorrent/plugins/quotaspace/quotaspace.css
+
+# 44. Disable default-ssl
 a2dissite default-ssl
 service apache2 reload
 service apache2 restart
