@@ -821,12 +821,17 @@ apt-get --yes -f install
 chown -R www-data:www-data /var/www/rutorrent
 chmod -R 755 /var/www/rutorrent
 
-#26.
+# 26.
 perl -pi -e "s/\\\$topDirectory\, \\\$fm/\\\$homeDirectory\, \\\$topDirectory\, \\\$fm/g" /var/www/rutorrent/plugins/filemanager/flm.class.php
 perl -pi -e "s/\\\$this\-\>userdir \= addslash\(\\\$topDirectory\)\;/\\\$this\-\>userdir \= \\\$homeDirectory \? addslash\(\\\$homeDirectory\) \: addslash\(\\\$topDirectory\)\;/g" /var/www/rutorrent/plugins/filemanager/flm.class.php
 perl -pi -e "s/\\\$topDirectory/\\\$homeDirectory/g" /var/www/rutorrent/plugins/filemanager/settings.js.php
 
-#27.
+# 26.1 
+# Update Main ruTorrent CSS
+mv /var/www/rutorrent/css/style.css /var/www/rutorrent/css/style.css.ORI
+cp /etc/kyneticweb-seedbox/var-www-rutorrent-style.css /var/www/rutorrent/css/style.css
+
+# 27.
 unzip /etc/kyneticweb-seedbox/rutorrent-oblivion.zip -d /var/www/rutorrent/plugins/
 echo "" | tee -a /var/www/rutorrent/css/style.css > /dev/null
 echo "/* for Oblivion */" | tee -a /var/www/rutorrent/css/style.css > /dev/null
