@@ -349,7 +349,7 @@ service apache2 restart
 mkdir /etc/apache2/auth.users
 
 echo "$HOSTNAME.kyneticweb.com" > /etc/kyneticweb-seedbox/hostname.info
-echo "$IPADDRESS1" > /etc/kyneticweb-seedbox/hostname.info
+#echo "$IPADDRESS1" > /etc/kyneticweb-seedbox/hostname.info
 
 # 12.
 export TEMPHOSTNAME1=KyneticWebSeedBox
@@ -968,7 +968,7 @@ perl -pi -e "s/SSLCertificateKeyFile \/etc\/ssl\/private\/ssl-cert-snakeoil.key/
 #perl -pi -e "s/\\\$auth \= \'\';/\\\$auth \= \'\\\$NEWUSER1\:\\\$PASSWORD1\';/g" /var/www/rutorrent/plugins/stream/config.php
 
 # 43. Remove redundant disk meter
-perl -pi -e "s/#meter-disk-td \{\ background\: url\(\.\/images\/hd.png\)\ 5px no-repeat\; \}/#meter-disk-td \{\ background\: url\(\.\/images\/hd.png\)\ 5px no-repeat\;display\:none\;\}/g" /var/www/rutorrent/plugins/oblivion/plugins.css
+#perl -pi -e "s/#meter-disk-td \{\ background\: url\(\.\/images\/hd.png\)\ 5px no-repeat\; \}/#meter-disk-td \{\ background\: url\(\.\/images\/hd.png\)\ 5px no-repeat\;display\:none\;\}/g" /var/www/rutorrent/plugins/oblivion/plugins.css
 
 # 44. Remove Sendmail - it's a resource hog
 #apt-get purge sendmail*
